@@ -26,13 +26,15 @@ public class Filme {
 	@OneToMany(mappedBy = "filme", fetch = FetchType.EAGER)
 	@JsonManagedReference
 	private List<Critica> criticas;
+	private String urlImg;
 
 	public Filme() {
 		super();
 	}
 	
-	public Filme(String titulo, LocalDate dataLancamento) {
+	public Filme(String titulo, LocalDate dataLancamento, String urlImg) {
 		super();
+		this.urlImg = urlImg;
 		this.titulo = titulo;
 		this.dataLancamento = dataLancamento;
 	}
@@ -43,6 +45,11 @@ public class Filme {
 
 	public String getTitulo() {
 		return titulo;
+	}
+
+	
+	public String getUrlImg() {
+		return urlImg;
 	}
 
 	public LocalDate getDataLancamento() {

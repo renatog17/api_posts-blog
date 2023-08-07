@@ -3,6 +3,8 @@ package com.renato.apicriticas.domain;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,10 +19,11 @@ public class Critica {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long criticaId;
 	private String critica;
 	@ManyToOne
-	@JoinColumn(name = "id_filme")
+	@JoinColumn(name = "filme_id")
+	@JsonBackReference
 	private Filme filme;
 	private LocalDate dataCritica;
 	
@@ -35,7 +38,7 @@ public class Critica {
 		// TODO Auto-generated constructor stub
 	}
 	public Long getId() {
-		return id;
+		return criticaId;
 	}
 	public String getCritica() {
 		return critica;
@@ -48,7 +51,7 @@ public class Critica {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(criticaId);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -59,6 +62,6 @@ public class Critica {
 		if (getClass() != obj.getClass())
 			return false;
 		Critica other = (Critica) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(criticaId, other.criticaId);
 	}
 }

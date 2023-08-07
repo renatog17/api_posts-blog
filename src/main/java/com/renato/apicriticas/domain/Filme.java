@@ -1,12 +1,17 @@
 package com.renato.apicriticas.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity(name = "Filme")
@@ -15,9 +20,12 @@ public class Filme {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long filmeId;
 	private String titulo;
 	private LocalDate dataLancamento;
+	@OneToMany(mappedBy = "filme", fetch = FetchType.EAGER)
+	@JsonManagedReference
+	private List<Critica> criticas;
 
 	public Filme() {
 		super();
@@ -30,7 +38,7 @@ public class Filme {
 	}
 
 	public Long getId() {
-		return id;
+		return filmeId;
 	}
 
 	public String getTitulo() {
@@ -43,7 +51,7 @@ public class Filme {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(filmeId);
 	}
 
 	@Override
@@ -55,6 +63,6 @@ public class Filme {
 		if (getClass() != obj.getClass())
 			return false;
 		Filme other = (Filme) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(filmeId, other.filmeId);
 	}
 }

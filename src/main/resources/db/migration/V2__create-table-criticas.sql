@@ -1,7 +1,7 @@
 CREATE TABLE criticas (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    critica_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     critica VARCHAR(1000) NOT NULL,
-    dataCritica DATE,
+    data_critica DATE,
     filme_id BIGINT,
-    FOREIGN KEY (filme_id) REFERENCES filmes(id)
+    FOREIGN KEY (filme_id) REFERENCES filmes(filme_id)
 );

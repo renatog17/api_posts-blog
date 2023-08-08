@@ -22,7 +22,6 @@ public class FilmeController {
 	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Filme>> getFilmes(){
-		System.out.println("aqui");
 		List<Filme> filmes = filmeRepository.findAll();
 		return ResponseEntity.ok(filmes);
 	}

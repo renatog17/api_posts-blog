@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.renato.apicriticas.domain.Filme;
-import com.renato.apicriticas.repository.FilmeRepository;
+import com.renato.apicriticas.domain.Post;
+import com.renato.apicriticas.repository.PostRepository;
 
 @RestController
-@RequestMapping("/filmes")
-public class FilmeController {
+@RequestMapping("/posts")
+public class PostController {
 
 	@Autowired
-	private FilmeRepository filmeRepository;
+	private PostRepository postRepository;
 	
 	@CrossOrigin
 	@GetMapping
-	public ResponseEntity<List<Filme>> getFilmes(){
-		List<Filme> filmes = filmeRepository.findAll();
-		return ResponseEntity.ok(filmes);
+	public ResponseEntity<List<Post>> getFilmes(){
+		List<Post> posts = postRepository.findAll();
+		return ResponseEntity.ok(posts);
 	}
 }

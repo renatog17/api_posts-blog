@@ -8,5 +8,6 @@ import com.renato.apicriticas.domain.Post;
 
 public interface PostRepository extends JpaRepository<Post, Long>{
 
-	Page<Post> findAll(Pageable page);
+	Page<Post> findAllByAtivoTrue(Pageable page);
+	Post getReferenceByIdAndAtivoTrue(Long id);
 }
